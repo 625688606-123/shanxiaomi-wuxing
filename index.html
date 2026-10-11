@@ -46,7 +46,45 @@ body.mobile-only .bar-row{grid-template-columns:20px minmax(0,1fr) 18px 32px;gap
 body.mobile-only .bar-row>span{font-size:10px}
 body.mobile-only .design-settings,body.mobile-only .design-results,body.mobile-only .export-panel,body.mobile-only .rulebook,body.mobile-only footer{display:none!important}
 body.mobile-only .notice.light{display:none}
-</style></head><body class="mobile-only"><div id="root"></div><noscript>请使用启用JavaScript的浏览器打开此工具。</noscript><script>"use strict";(()=>{var ac=Object.create;var Nl=Object.defineProperty;var tc=Object.getOwnPropertyDescriptor;var uc=Object.getOwnPropertyNames;var nc=Object.getPrototypeOf,ic=Object.prototype.hasOwnProperty;var sa=(e,a)=>()=>{try{return a||e((a={exports:{}}).exports,a),a.exports}catch(t){throw a=0,t}};var lc=(e,a,t,u)=>{if(a&&typeof a=="object"||typeof a=="function")for(let n of uc(a))!ic.call(e,n)&&n!==t&&Nl(e,n,{get:()=>a[n],enumerable:!(u=tc(a,n))||u.enumerable});return e};var va=(e,a,t)=>(t=e!=null?ac(nc(e)):{},lc(a||!e||!e.__esModule?Nl(t,"default",{value:e,enumerable:!0}):t,e));var Xl=sa(Fe=>{"use strict";/**
+</style><style>
+#gate{position:fixed;inset:0;z-index:99999;background:#FBF7F0;display:flex;align-items:center;justify-content:center;font-family:-apple-system,'PingFang SC','Helvetica Neue',sans-serif;}
+#gate .gate-box{background:#fff;border:3px solid #B8952A;border-radius:18px;padding:40px 32px;width:84%;max-width:340px;box-shadow:0 10px 40px rgba(184,149,42,.28);text-align:center;}
+#gate .gate-title{color:#B8952A;font-size:22px;font-weight:700;margin-bottom:6px;}
+#gate .gate-sub{color:#8B1A1A;font-size:13px;margin-bottom:22px;}
+#gate input{width:100%;padding:13px 14px;font-size:16px;border:2px solid #B8952A;border-radius:10px;box-sizing:border-box;margin-bottom:16px;text-align:center;}
+#gate button{width:100%;padding:13px;font-size:16px;color:#fff;background:#8B1A1A;border:none;border-radius:10px;cursor:pointer;font-weight:600;}
+#gate button:active{background:#B8952A;}
+#gate .gate-err{color:#8B1A1A;font-size:13px;margin-top:14px;display:none;}
+</style>
+</head><body class="mobile-only">
+<div id="gate">
+  <div class="gate-box">
+    <div class="gate-title">闪小米五行珠宝设计助手</div>
+    <div class="gate-sub">请输入访问密码</div>
+    <input id="gate-pwd" type="password" placeholder="请输入密码" autocomplete="off" />
+    <button id="gate-btn">进入</button>
+    <div class="gate-err" id="gate-err">密码错误，请重试</div>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY = 'shanxiaomi19';
+  var gate = document.getElementById('gate');
+  if (sessionStorage.getItem('sx_gate_ok') === '1') { gate.style.display = 'none'; return; }
+  function check(){
+    var v = document.getElementById('gate-pwd').value;
+    if (v.trim() === KEY) {
+      try { sessionStorage.setItem('sx_gate_ok','1'); } catch(e){}
+      gate.style.display = 'none';
+    } else {
+      document.getElementById('gate-pwd').value = '';
+      document.getElementById('gate-err').style.display = 'block';
+    }
+  }
+  document.getElementById('gate-btn').addEventListener('click', check);
+  document.getElementById('gate-pwd').addEventListener('keydown', function(e){ if(e.key==='Enter') check(); });
+})();
+</script><div id="root"></div><noscript>请使用启用JavaScript的浏览器打开此工具。</noscript><script>"use strict";(()=>{var ac=Object.create;var Nl=Object.defineProperty;var tc=Object.getOwnPropertyDescriptor;var uc=Object.getOwnPropertyNames;var nc=Object.getPrototypeOf,ic=Object.prototype.hasOwnProperty;var sa=(e,a)=>()=>{try{return a||e((a={exports:{}}).exports,a),a.exports}catch(t){throw a=0,t}};var lc=(e,a,t,u)=>{if(a&&typeof a=="object"||typeof a=="function")for(let n of uc(a))!ic.call(e,n)&&n!==t&&Nl(e,n,{get:()=>a[n],enumerable:!(u=tc(a,n))||u.enumerable});return e};var va=(e,a,t)=>(t=e!=null?ac(nc(e)):{},lc(a||!e||!e.__esModule?Nl(t,"default",{value:e,enumerable:!0}):t,e));var Xl=sa(Fe=>{"use strict";/**
  * @license React
  * scheduler.production.js
  *
