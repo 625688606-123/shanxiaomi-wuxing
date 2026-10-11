@@ -70,11 +70,11 @@ body.mobile-only .notice.light{display:none}
 (function(){
   var KEY = 'shanxiaomi19';
   var gate = document.getElementById('gate');
-  if (sessionStorage.getItem('sx_gate_ok') === '1') { gate.style.display = 'none'; return; }
+  if (localStorage.getItem('sx_gate_ok') === '1') { gate.style.display = 'none'; return; }
   function check(){
     var v = document.getElementById('gate-pwd').value;
     if (v.trim() === KEY) {
-      try { sessionStorage.setItem('sx_gate_ok','1'); } catch(e){}
+      try { localStorage.setItem('sx_gate_ok','1'); } catch(e){}
       gate.style.display = 'none';
     } else {
       document.getElementById('gate-pwd').value = '';
